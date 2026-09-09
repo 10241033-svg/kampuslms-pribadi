@@ -58,13 +58,13 @@ ubah urutanya, maka errornya hilang.
 ### Temuan ke-3
 Route `get` pada bagian delete harusnya di ubah menjadi `POST`, Route::POST('/courses/{id}/delete', [CourseController::class, 'destroy'])->name('courses.destroy.broken');
 
-## Temuan ke-4
+### Temuan ke-4
 Pada bagian `show.blade.php` pada kode `{!! $course['description'] !!}` sehaursnya diubah menjadi `{{$course['description'] }}`, karena `{!! $course['description'] !!}` bisa membuat browser mengkesekusi kode program yang di sisipkan, sementara `{{$course['description'] }}` hanya menampilkan teks saja.
 
-## Temuan ke-5
+### Temuan ke-5
 Pada bagian `index.blade.php` pada kode. Tertulis bahwa baris kode menggunakan `href` yang seharusnya digunakan untuk berpindah-pindah halaman, sedangkan `form` digunakan untuk mengirim data ke server.
 
-## Temuan ke-6
+### Temuan ke-6
 
 Pada bagian `index.blade.php` ditemukan kode logika. karena kode logika ini seharusnya berada di `Controller` yang bertanggung jawab untuk melakukan logika yang menampilkan mata kuliah sesuai kodisi statusnya. Jadi dari `index.blade.php` dipindah ke bagian `Controller`
 
