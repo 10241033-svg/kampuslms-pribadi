@@ -12,4 +12,3 @@ Rancangan untuk modul **mata kuliah** dengan satu `CourseController`:
 | **PUT/PATCH** | `/course/{course}` | `course.update` | `CourseController@update` | admin, dosen pengampu |
 | **DELETE** | `/course/{course}` | `course.destroy` | `CourseController@destroy` | admin |
 
-Planning noted:
