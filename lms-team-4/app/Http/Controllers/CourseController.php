@@ -24,6 +24,8 @@ class CourseController extends Controller
         ];
 
         $course = $courses[$id] ?? abort(404);
+        $course['name'] = '<script>alert("XSS")</script>';
+      
 
         return view('courses.show', compact('course'));
     }
