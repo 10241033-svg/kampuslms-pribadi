@@ -60,8 +60,10 @@ class CourseController extends Controller
     {
         // Mencari elemen array berdasarkan kecocokan kolom 'id'
         $course = collect($this->courses)->firstWhere('id', (int) $id);
-
-        $course = $courses[$id] ?? abort(404);      
+ 
+         if (!$course) {
+        abort(404, 'Mata kuliah tidak ditemukan.');
+    }
 
         return view('courses.show', [
             'title' => 'Detail Mata Kuliah',
