@@ -61,16 +61,7 @@ class CourseController extends Controller
         // Mencari elemen array berdasarkan kecocokan kolom 'id'
         $course = collect($this->courses)->firstWhere('id', (int) $id);
 
-<<<<<<< HEAD
-        $course = $courses[$id] ?? abort(404);
-        $course['name'] = '<script>alert("XSS")</script>';
-      
-=======
-        // Jika data tidak ditemukan, hentikan proses dan tampilkan respon 404
-        if (!$course) {
-            abort(404, 'Mata kuliah tidak ditemukan.');
-        }
->>>>>>> 1d4ea110ecac3cb868a81e047a60e8025649b127
+        $course = $courses[$id] ?? abort(404);      
 
         return view('courses.show', [
             'title' => 'Detail Mata Kuliah',
