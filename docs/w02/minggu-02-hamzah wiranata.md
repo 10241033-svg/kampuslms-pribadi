@@ -39,3 +39,29 @@ Jawaban
 | 6 | Hapus `@vite(...)` dari layout | Asset CSS/JS dari Vite tidak akan dimuat jika `@vite(...)` dihapus. |
 | 7 | Hentikan `npm run dev` lalu muat ulang halaman | Frontend dev server harus aktif agar asset dan tampilan bisa dimuat dengan benar. |
 | 8 | Panggil `route('courses.show')` tanpa mengirim parameter | Route yang membutuhkan parameter harus diberi nilai, kalau tidak Laravel akan error. |
+
+---
+
+### FIX
+https://github.com/wiranata-orion/LMS-Broken/blob/W02/README.md
+
+### Temuan ke-1
+`@vite(['resources/css/app.css', 'resources/js/app.js'])` menyembabkan error karena `npm` belum di install di directory, setelah install `npm`
+
+### Temuan ke-2
+
+Pada bagian tambah mata kuliah terjadi eror 404 di karenakan laravel membaca dari atas kebawah, karena laravel menemukan route yang sama dengan yang di minta maka dia akan langsung menjalankan route yang paling atas itu terjadi karena routenya mirip, padahal route yang di minta ada di paling bawah.
+ubah urutanya, maka errornya hilang.
+
+### Temuan ke-3
+Route `get` pada bagian delete harusnya di ubah menjadi `POST`, Route::POST('/courses/{id}/delete', [CourseController::class, 'destroy'])->name('courses.destroy.broken');
+
+### Temuan ke-4
+Pada bagian `show.blade.php` pada kode `{!! $course['description'] !!}` sehaursnya diubah menjadi `{{$course['description'] }}`, karena `{!! $course['description'] !!}` bisa membuat browser mengkesekusi kode program yang di sisipkan, sementara `{{$course['description'] }}` hanya menampilkan teks saja.
+
+### Temuan ke-5
+Pada bagian `index.blade.php` pada kode. Tertulis bahwa baris kode menggunakan `href` yang seharusnya digunakan untuk berpindah-pindah halaman, sedangkan `form` digunakan untuk mengirim data ke server.
+
+### Temuan ke-6
+
+Pada bagian `index.blade.php` ditemukan kode logika. karena kode logika ini seharusnya berada di `Controller` yang bertanggung jawab untuk melakukan logika yang menampilkan mata kuliah sesuai kodisi statusnya. Jadi dari `index.blade.php` dipindah ke bagian `Controller`
