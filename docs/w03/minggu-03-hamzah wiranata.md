@@ -13,7 +13,7 @@ Sebelum menyentuh kode, kerjakan bersama kelompok:
 
 Jawaban
 1. Hasil gambar ulang ERD
-   
+   ![alt text](image/image.png)
 2. Tentuan `onDelete` daan alasannya
     `courses.lecturer_id` → `users.id`, **restrictOnDelete**.
 
